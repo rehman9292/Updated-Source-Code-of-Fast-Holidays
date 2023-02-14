@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Disallow: /secret
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://get2day.info
+
+# Sitemaps
+Sitemap: https://get2day.info/sitemap.xml
