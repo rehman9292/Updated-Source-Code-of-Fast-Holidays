@@ -52,19 +52,29 @@ export default function Footer() {
       <div className={styles.footer__contactUs}>
         <div className={styles.footer__contact_grid}>
           <LocalPhoneIcon sx={muiStyles.footer__link} />
-          <a href={`tel:${number}`}>{number}</a>
+          <a href={`tel:${number}`}>
+            <Typography>{number}</Typography>
+          </a>
         </div>
         <div className={styles.footer__contact_grid}>
           <EmailIcon sx={muiStyles.footer__link} />
-          <a href={`mailto:${email}`}>{email}</a>
+          <a href={`mailto:${email}`}>
+          <Typography>{email}</Typography>
+            </a>
         </div>
         <div className={styles.footer__contact_grid}>
           <EmailIcon sx={muiStyles.footer__link} />
-          <a href={`mailto:${bookingEmail}`}>{bookingEmail}</a>
+          <a href={`mailto:${bookingEmail}`}>
+          <Typography>{bookingEmail}</Typography>
+            
+            </a>
         </div>
         <div className={styles.footer__contact_grid}>
           <LocationOnIcon sx={muiStyles.footer__link} />
-          <a href={``}>{address}</a>
+          <a href={``}>
+          <Typography>{address}</Typography>
+            
+            </a>
         </div>
       </div>
 

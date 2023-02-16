@@ -267,6 +267,11 @@ export default function Searchbar() {
               autoHighlight
               disableClearable
               // onFocusCapture={() => getData()}
+              renderOption={(props, option) => (
+                <Typography component="li" sx={{ fontSize: '12px' }} {...props}>
+                  {option}
+                </Typography>
+              )}
               options={
                 data
                   ? data.map(
