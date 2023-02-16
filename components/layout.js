@@ -27,6 +27,12 @@ import {
   DialogTitle,
   DialogContent,
 } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import { styled } from '@mui/material/styles';
 
 import HomeIcon from '@mui/icons-material/Home';
 import { theme } from '@/styles/theme';
@@ -36,6 +42,17 @@ import CallIcon from '@mui/icons-material/Call';
 import { number, whatsapp } from '../utils/constants';
 import { getCookie, setCookie } from 'utils/cookies';
 import DialogComponent from './common/dialog';
+
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import PolicyIcon from '@mui/icons-material/Policy';
+import GavelIcon from '@mui/icons-material/Gavel';
+import HelpIcon from '@mui/icons-material/Help';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
+import AirlinesIcon from '@mui/icons-material/Airlines';
+import SendIcon from '@mui/icons-material/Send';
+import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
 
 const drawerWidth = 280;
 
@@ -78,14 +95,14 @@ export default function Layout({
     <div className={styles.drawer}>
       <ThemeProvider theme={theme}>
         <div className={styles.drawerLinks}>
-          <List sx={{ padding: 0 }}>
+          <List sx={{ padding: 0, marginTop: '19px' }}>
             <Link href="/" className={styles.link}>
               <ListItem
                 button={router.pathname == '/' ? false : true}
                 sx={
                   router.pathname == '/'
                     ? {
-                        backgroundColor: '#000',
+                        backgroundColor: '#5688c6',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -97,7 +114,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/'
                         ? { color: 'white' }
-                        : { color: 'black' }
+                        : { color: '#5688c6' }
                     }
                   />
                 </ListItemIcon>
@@ -113,7 +130,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/destinations'
                     ? {
-                        backgroundColor: '#000',
+                        backgroundColor: '#5688c6',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -121,11 +138,11 @@ export default function Layout({
                 }
               >
                 <ListItemIcon>
-                  <HomeIcon
+                  <AddLocationAltIcon
                     sx={
                       router.pathname == '/destinations'
                         ? { color: 'white' }
-                        : { color: 'black' }
+                        : { color: '#5688c6' }
                     }
                   />
                 </ListItemIcon>
@@ -141,7 +158,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/airlines'
                     ? {
-                        backgroundColor: '#000',
+                        backgroundColor: '#5688c6',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -149,11 +166,11 @@ export default function Layout({
                 }
               >
                 <ListItemIcon>
-                  <HomeIcon
+                  <AirlinesIcon
                     sx={
                       router.pathname == '/airlines'
                         ? { color: 'white' }
-                        : { color: 'black' }
+                        : { color: '#5688c6' }
                     }
                   />
                 </ListItemIcon>
@@ -169,7 +186,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/send-inquiry'
                     ? {
-                        backgroundColor: '#000',
+                        backgroundColor: '#5688c6',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -177,11 +194,11 @@ export default function Layout({
                 }
               >
                 <ListItemIcon>
-                  <HomeIcon
+                  <SendIcon
                     sx={
                       router.pathname == '/send-inquiry'
                         ? { color: 'white' }
-                        : { color: 'black' }
+                        : { color: '#5688c6' }
                     }
                   />
                 </ListItemIcon>
@@ -197,7 +214,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/beat-my-quote'
                     ? {
-                        backgroundColor: '#000',
+                        backgroundColor: '#5688c6',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -205,11 +222,11 @@ export default function Layout({
                 }
               >
                 <ListItemIcon>
-                  <HomeIcon
+                  <RequestQuoteIcon
                     sx={
                       router.pathname == '/beat-my-quote'
                         ? { color: 'white' }
-                        : { color: 'black' }
+                        : { color: '#5688c6' }
                     }
                   />
                 </ListItemIcon>
@@ -219,6 +236,165 @@ export default function Layout({
               </ListItem>
             </Link>
             <Divider />
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>More</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <List sx={{ padding: 0, marginTop: '0' }}>
+                  <Link href={`/contact-us`} className={styles.link}>
+                    <ListItem
+                      button={router.pathname == '/contact-us' ? false : true}
+                      sx={
+                        router.pathname == '/contact-us'
+                          ? {
+                              backgroundColor: '#5688c6',
+                              cursor: 'pointer',
+                              color: 'white',
+                            }
+                          : { cursor: 'pointer' }
+                      }
+                    >
+                      <ListItemIcon>
+                        <ContactSupportIcon
+                          sx={
+                            router.pathname == '/contact-us'
+                              ? { color: 'white' }
+                              : { color: '#5688c6' }
+                          }
+                        />
+                      </ListItemIcon>
+                      <ListItemText className={styles.listItemText}>
+                        Contact us
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                  <Link href={`/privacy-policy`} className={styles.link}>
+                    <ListItem
+                      button={
+                        router.pathname == '/privacy-policy' ? false : true
+                      }
+                      sx={
+                        router.pathname == '/privacy-policy'
+                          ? {
+                              backgroundColor: '#5688c6',
+                              cursor: 'pointer',
+                              color: 'white',
+                            }
+                          : { cursor: 'pointer' }
+                      }
+                    >
+                      <ListItemIcon>
+                        <PolicyIcon
+                          sx={
+                            router.pathname == '/privacy-policy'
+                              ? { color: 'white' }
+                              : { color: '#5688c6' }
+                          }
+                        />
+                      </ListItemIcon>
+                      <ListItemText className={styles.listItemText}>
+                        Privacy Policy
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                  <Link href={`/booking-conditions`} className={styles.link}>
+                    <ListItem
+                      button={
+                        router.pathname == '/booking-conditions' ? false : true
+                      }
+                      sx={
+                        router.pathname == '/booking-conditions'
+                          ? {
+                              backgroundColor: '#5688c6',
+                              cursor: 'pointer',
+                              color: 'white',
+                            }
+                          : { cursor: 'pointer' }
+                      }
+                    >
+                      <ListItemIcon>
+                        <GavelIcon
+                          sx={
+                            router.pathname == '/booking-conditions'
+                              ? { color: 'white' }
+                              : { color: '#5688c6' }
+                          }
+                        />
+                      </ListItemIcon>
+                      <ListItemText className={styles.listItemText}>
+                        Booking Conditions
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                  <Link href={`/terms-conditions`} className={styles.link}>
+                    <ListItem
+                      button={
+                        router.pathname == '/terms-conditions' ? false : true
+                      }
+                      sx={
+                        router.pathname == '/terms-conditions'
+                          ? {
+                              backgroundColor: '#5688c6',
+                              cursor: 'pointer',
+                              color: 'white',
+                            }
+                          : { cursor: 'pointer' }
+                      }
+                    >
+                      <ListItemIcon>
+                        <HelpIcon
+                          sx={
+                            router.pathname == '/terms-conditions'
+                              ? { color: 'white' }
+                              : { color: '#5688c6' }
+                          }
+                        />
+                      </ListItemIcon>
+                      <ListItemText className={styles.listItemText}>
+                        Terms & Conditions
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                  <Link href={`/faqs`} className={styles.link}>
+                    <ListItem
+                      button={router.pathname == '/faqs' ? false : true}
+                      sx={
+                        router.pathname == '/faqs'
+                          ? {
+                              backgroundColor: '#5688c6',
+                              cursor: 'pointer',
+                              color: 'white',
+                            }
+                          : { cursor: 'pointer' }
+                      }
+                    >
+                      <ListItemIcon>
+                        <QuestionAnswerIcon
+                          sx={
+                            router.pathname == '/faqs'
+                              ? { color: 'white' }
+                              : { color: '#5688c6' }
+                          }
+                        />
+                      </ListItemIcon>
+                      <ListItemText className={styles.listItemText}>
+                        FAQs
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                  <Divider />
+                </List>
+              </AccordionDetails>
+            </Accordion>
           </List>
         </div>
         <div>{/* <Button>Call</Button> */}</div>
@@ -333,3 +509,40 @@ Layout.defaultProps = {
   description: '',
   keywords: '',
 };
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  '&:not(:last-child)': {
+    borderBottom: 0,
+  },
+  '&:before': {
+    display: 'none',
+  },
+}));
+
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, .05)'
+      : 'rgba(0, 0, 0, .03)',
+  flexDirection: 'row-reverse',
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(180deg)',
+  },
+  '& .MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(4),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(0),
+  borderTop: '1px solid rgba(0, 0, 0, .125)',
+  marginTop: 0,
+}));

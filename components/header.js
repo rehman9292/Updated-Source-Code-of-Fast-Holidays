@@ -33,6 +33,9 @@ const muiStyles = {
     fontSize: '35px',
     // marginRight: "30px",
   },
+  logoLink: {
+    fontSize: '1.3rem',
+  },
 };
 
 export default function Header({ onMenuClick, clicked, onConnectClick }) {
@@ -77,7 +80,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                       : styles.simpleLink
                   }
                 >
-                  <Typography>Home</Typography>
+                  <Typography sx={muiStyles.logoLink}>Home</Typography>
                 </div>
               </Link>
               <Link href="/destinations" passHref>
@@ -88,7 +91,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                       : styles.simpleLink
                   }
                 >
-                  <Typography>Destinations</Typography>
+                  <Typography sx={muiStyles.logoLink}>Destinations</Typography>
                 </div>
               </Link>
               <Link href="/airlines" passHref>
@@ -99,7 +102,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                       : styles.simpleLink
                   }
                 >
-                  <Typography>Airlines</Typography>
+                  <Typography sx={muiStyles.logoLink}>Airlines</Typography>
                 </div>
               </Link>
               <Link href="/send-inquiry" passHref>
@@ -110,7 +113,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                       : styles.simpleLink
                   }
                 >
-                  <Typography>Send Inquiry</Typography>
+                  <Typography sx={muiStyles.logoLink}>Send Inquiry</Typography>
                 </div>
               </Link>
               <Link href="/beat-my-quote" passHref>
@@ -121,7 +124,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                       : styles.simpleLink
                   }
                 >
-                  <Typography>Beat My Quote</Typography>
+                  <Typography sx={muiStyles.logoLink}>Beat My Quote</Typography>
                 </div>
               </Link>
             </div>
@@ -138,7 +141,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
           <a href={`tel:${number}`} className={styles.numberContainer}>
             <div className={styles.number}>
               <PhoneIcon />
-              <Typography>{number}</Typography>
+              <Typography sx={muiStyles.number}>{number}</Typography>
             </div>
           </a>
         </div>

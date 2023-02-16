@@ -85,7 +85,7 @@ export default function FareCard({ data, index }) {
                 data.destAirport.airportCode,
               )}`}
             >
-              <Button variant="contained">Select</Button>
+              <Button variant="contained">Inquire us</Button>
             </Link>
           </div>
         </div>

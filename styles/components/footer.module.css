@@ -1,5 +1,5 @@
 .footer {
-  background-color: #0c0c0c;
+  background-color: #5688c6;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-between;
@@ -38,7 +38,7 @@
 }
 
 .logo {
-  width: 150px
+  width: 150px;
 }
 
 .footer__logo {

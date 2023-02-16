@@ -53,7 +53,7 @@ export default function Searchbar() {
   const [loading, setLoading] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
 
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState(0);
 
   const handleChange1 = (event, newValue) => {
     setValue(newValue);
@@ -134,7 +134,15 @@ export default function Searchbar() {
 
   const handleSubmit = () => {
     setLoading(true);
-    if (arriveDate && deptdate && selectedDept && selectedDest) {
+    if (
+      arriveDate &&
+      deptdate &&
+      selectedDept &&
+      selectedDest &&
+      details.email &&
+      details.phone &&
+      details.name
+    ) {
       emailjs
         .send(
           'service_1d21p96',
@@ -220,14 +228,18 @@ export default function Searchbar() {
               disableClearable
               autoHighlight
               // onFocusCapture={() => getData()}
+              renderOption={(props, option) => (
+                <Typography component="li" sx={{ fontSize: '12px' }} {...props}>
+                  {option}
+                </Typography>
+              )}
               options={
                 data
                   ? data.map(
                       (deptt, i) =>
-                        ` ${convertString(deptt.city)} - (${
-                          deptt.airportCode
-                        }) - ${convertString(deptt.airport)} - 
-                    ${convertString(deptt.country)}`,
+                        `${convertString(deptt.city)} - (${deptt.airportCode})
+                          - ${convertString(deptt.airport)} - 
+                          ${convertString(deptt.country)}`,
                     )
                   : ['']
               }

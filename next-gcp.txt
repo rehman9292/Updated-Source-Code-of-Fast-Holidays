@@ -1,0 +1,74 @@
+After making a VM Instance
+#############################################################
+sudo apt update -y 
+sudo apt upgrade -y
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo apt-add-repository -r ppa:certbot/certbot
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo systemctl restart nginx
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get install yarn
+sudo yarn global add pm2
+
+#############################################################
+
+Deploy new next version
+sudo git pull
+sudo rm -rf .next
+sudo yarn install
+sudo yarn build
+sudo pm2 restart nextjs
+
+sudo pm2 start yarn --name "nextjs" --interpreter bash -- start
+
+#############################################################
+
+git remote set-url origin https://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@github.com/rehman9292/fast-travels-next.git
+
+https://github.com/rehman9292/fast-travels-next.git
+
+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
+
+git config --global user.email "rehman@metamelon.org"
+
+#############################################################
+
+sudo nano oasistravels.conf
+
+server {
+   listen 80;
+   root /var/www/html;
+   index index.html index.php index.htm index.nginx-debian.html;
+   server_name oasistravels.co.uk www.oasistravels.co.uk;
+#   rewrite ^(.*) https://$host$1 permanent;
+# log
+ access_log /var/log/nginx/oasistravels.access.log;
+ error_log /var/log/nginx/oasistravels.error.log;
+        location / {
+            rewrite ^/(.*) /$1 break;
+            proxy_ignore_client_abort on;
+            proxy_pass http://localhost:3000;
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header  Host $http_host;
+        }
+        location /blog {
+                try_files $uri $uri/ /blog/index.php?$args;
+        }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+        location ~ /\.ht {
+                deny all;
+        }
+ # common gzip
+ gzip_types text/css text/scss text/plain text/xml application/xml application/>
+ gzip on;
+}
