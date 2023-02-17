@@ -95,7 +95,7 @@ export default function Layout({
     <div className={styles.drawer}>
       <ThemeProvider theme={theme}>
         <div className={styles.drawerLinks}>
-          <List sx={{ padding: 0, marginTop: '19px' }}>
+          <List sx={{ padding: 0, marginTop: '5px' }}>
             <Link href="/" className={styles.link}>
               <ListItem
                 button={router.pathname == '/' ? false : true}

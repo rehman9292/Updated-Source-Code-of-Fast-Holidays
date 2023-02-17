@@ -5,7 +5,14 @@ import Image from 'next/image';
 import styles from '@/styles/components/header.module.css';
 import { number } from 'utils/constants';
 
-import { IconButton, Divider, Typography, Button } from '@mui/material';
+import {
+  IconButton,
+  Divider,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import { theme } from '@/styles/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
@@ -34,16 +41,21 @@ const muiStyles = {
     // marginRight: "30px",
   },
   logoLink: {
-    fontSize: '1.3rem',
+    fontSize: '1.1rem',
   },
 };
 
 export default function Header({ onMenuClick, clicked, onConnectClick }) {
   const router = useRouter();
 
-  // const handleConnect = async () => {};
-
-  // console.log(clicked);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <header className={styles.header}>
@@ -56,7 +68,7 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                   <img
                     src="/logo.png"
                     alt="Fast Travels' logo"
-                    style={{ width: '100%' }}
+                    style={{ width: '80%' }}
                   />
                 </a>
               </Link>
@@ -94,6 +106,17 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                   <Typography sx={muiStyles.logoLink}>Destinations</Typography>
                 </div>
               </Link>
+              <Link href="/flights" passHref>
+                <div
+                  className={
+                    router.pathname.includes('/flights')
+                      ? styles.highlightedLink
+                      : styles.simpleLink
+                  }
+                >
+                  <Typography sx={muiStyles.logoLink}>Flights</Typography>
+                </div>
+              </Link>
               <Link href="/airlines" passHref>
                 <div
                   className={
@@ -127,6 +150,11 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                   <Typography sx={muiStyles.logoLink}>Beat My Quote</Typography>
                 </div>
               </Link>
+              <div className={styles.simpleLink}>
+                <Typography onClick={handleClick} sx={muiStyles.logoLink}>
+                  More
+                </Typography>
+              </div>
             </div>
           </div>
           <div className={styles.menuIconContainer}>
@@ -145,6 +173,37 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
             </div>
           </a>
         </div>
+        <Menu
+          id="demo-positioned-menu"
+          aria-labelledby="demo-positioned-button"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+          <Link href="/contact-us">
+            <MenuItem onClick={handleClose}>Contact Us</MenuItem>
+          </Link>
+          <Link href="/privacy-policy">
+            <MenuItem onClick={handleClose}>Privacy Policy</MenuItem>
+          </Link>
+          <Link href="/booking-conditions">
+            <MenuItem onClick={handleClose}>Booking Conditions</MenuItem>
+          </Link>
+          <Link href="/terms-conditions">
+            <MenuItem onClick={handleClose}>Terms & Conditions</MenuItem>
+          </Link>
+          <Link href="/faqs">
+            <MenuItem onClick={handleClose}>FAQs</MenuItem>
+          </Link>
+        </Menu>
       </ThemeProvider>
     </header>
   );
