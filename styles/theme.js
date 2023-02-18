@@ -9,4 +9,7 @@ export const theme = createTheme({
       main: '#fff',
     },
   },
+  typography: {
+    body1: {},
+  },
 });

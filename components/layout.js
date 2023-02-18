@@ -53,6 +53,8 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AirlinesIcon from '@mui/icons-material/Airlines';
 import SendIcon from '@mui/icons-material/Send';
 import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+import FlightIcon from '@mui/icons-material/Flight';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 
 const drawerWidth = 280;
 
@@ -148,6 +150,64 @@ export default function Layout({
                 </ListItemIcon>
                 <ListItemText className={styles.listItemText}>
                   Destinations
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Divider />
+
+            <Link href="/flights" className={styles.link}>
+              <ListItem
+                button={router.pathname == '/flights' ? false : true}
+                sx={
+                  router.pathname == '/flights'
+                    ? {
+                        backgroundColor: '#5688c6',
+                        cursor: 'pointer',
+                        color: 'white',
+                      }
+                    : { cursor: 'pointer' }
+                }
+              >
+                <ListItemIcon>
+                  <FlightIcon
+                    sx={
+                      router.pathname == '/flights'
+                        ? { color: 'white' }
+                        : { color: '#5688c6' }
+                    }
+                  />
+                </ListItemIcon>
+                <ListItemText className={styles.listItemText}>
+                  Flights
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Divider />
+
+            <Link href="/holidays" className={styles.link}>
+              <ListItem
+                button={router.pathname == '/holidays' ? false : true}
+                sx={
+                  router.pathname == '/holidays'
+                    ? {
+                        backgroundColor: '#5688c6',
+                        cursor: 'pointer',
+                        color: 'white',
+                      }
+                    : { cursor: 'pointer' }
+                }
+              >
+                <ListItemIcon>
+                  <HolidayVillageIcon
+                    sx={
+                      router.pathname == '/holidays'
+                        ? { color: 'white' }
+                        : { color: '#5688c6' }
+                    }
+                  />
+                </ListItemIcon>
+                <ListItemText className={styles.listItemText}>
+                  Holidays
                 </ListItemText>
               </ListItem>
             </Link>

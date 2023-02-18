@@ -117,6 +117,17 @@ export default function Header({ onMenuClick, clicked, onConnectClick }) {
                   <Typography sx={muiStyles.logoLink}>Flights</Typography>
                 </div>
               </Link>
+              <Link href="/holidays" passHref>
+                <div
+                  className={
+                    router.pathname.includes('/holidays')
+                      ? styles.highlightedLink
+                      : styles.simpleLink
+                  }
+                >
+                  <Typography sx={muiStyles.logoLink}>Holidays</Typography>
+                </div>
+              </Link>
               <Link href="/airlines" passHref>
                 <div
                   className={
