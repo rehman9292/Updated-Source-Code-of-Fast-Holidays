@@ -232,7 +232,7 @@ export default function BookNow() {
                 />
                 <MuiPhoneNumber
                   size="small"
-                  defaultCountry={'it'}
+                  defaultCountry={'gb'}
                   // regions={"europe"}
                   onChange={(value) => handleChange(value, 'phone')}
                   variant="outlined"

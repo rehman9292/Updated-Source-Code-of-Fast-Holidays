@@ -43,6 +43,9 @@ const muiStyles = {
   logoLink: {
     fontSize: '1.1rem',
   },
+  number: {
+    fontWeight: 'bold',
+  },
 };
 
 export default function Header({ onMenuClick, clicked, onConnectClick }) {

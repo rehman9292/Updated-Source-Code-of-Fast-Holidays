@@ -29,11 +29,11 @@ const muiStyles = {
     marginLeft: '2rem',
   },
   footer__link: {
-    opacity: '0.6',
+    opacity: '0.8',
     cursor: 'pointer',
     transition: 'all 0.1s ease-in-out',
     '&:hover': {
-      opacity: '0.8',
+      opacity: '1',
     },
   },
 };
@@ -59,22 +59,20 @@ export default function Footer() {
         <div className={styles.footer__contact_grid}>
           <EmailIcon sx={muiStyles.footer__link} />
           <a href={`mailto:${email}`}>
-          <Typography>{email}</Typography>
-            </a>
+            <Typography>{email}</Typography>
+          </a>
         </div>
         <div className={styles.footer__contact_grid}>
           <EmailIcon sx={muiStyles.footer__link} />
           <a href={`mailto:${bookingEmail}`}>
-          <Typography>{bookingEmail}</Typography>
-            
-            </a>
+            <Typography>{bookingEmail}</Typography>
+          </a>
         </div>
         <div className={styles.footer__contact_grid}>
           <LocationOnIcon sx={muiStyles.footer__link} />
           <a href={``}>
-          <Typography>{address}</Typography>
-            
-            </a>
+            <Typography>{address}</Typography>
+          </a>
         </div>
       </div>
 

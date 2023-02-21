@@ -75,7 +75,12 @@ export default function FareCard({ data, index }) {
             />
           </div>
           <a href={`tel:${number}`}>
-            <div className={styles.callingNumber}>{number}</div>
+            <div
+              className={styles.callingNumber}
+              style={{ fontWeight: 'bold' }}
+            >
+              {number}
+            </div>
           </a>
           <div>
             <Link
