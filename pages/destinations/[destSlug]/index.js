@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Layout from '../../../components/layout';
 import FareCard from '@/components/common/fareCard';
 import { countries } from 'utils/data';
+import Searchbar from '@/components/searchEngine';
 
 // firebase
 import {
@@ -170,10 +171,15 @@ export default function SingleDestination() {
     <Layout title={'Destinations'}>
       <div className={styles.faresPage}>
         {destData ? (
-          <div style={bannerStyles}>
-            {/* <img src={destData.banner} alt={`${destData.name} image`} /> */}
-            <h1>{convertString(destSlug)}</h1>
-          </div>
+          <>
+            <div style={bannerStyles}>
+              {/* <img src={destData.banner} alt={`${destData.name} image`} /> */}
+              <h1>{convertString(destSlug)}</h1>
+            </div>
+            <div style={{ marginTop: '2rem' }}>
+              <Searchbar />
+            </div>
+          </>
         ) : (
           <>
             {destSlug && (

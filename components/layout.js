@@ -104,7 +104,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -116,7 +116,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -132,7 +132,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/destinations'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -144,7 +144,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/destinations'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -161,7 +161,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/flights'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -173,7 +173,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/flights'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -190,7 +190,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/holidays'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -202,7 +202,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/holidays'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -218,7 +218,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/airlines'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -230,7 +230,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/airlines'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -246,7 +246,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/send-inquiry'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -258,7 +258,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/send-inquiry'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -274,7 +274,7 @@ export default function Layout({
                 sx={
                   router.pathname == '/beat-my-quote'
                     ? {
-                        backgroundColor: '#5688c6',
+                        backgroundColor: '#00b6f2',
                         cursor: 'pointer',
                         color: 'white',
                       }
@@ -286,7 +286,7 @@ export default function Layout({
                     sx={
                       router.pathname == '/beat-my-quote'
                         ? { color: 'white' }
-                        : { color: '#5688c6' }
+                        : { color: '#00b6f2' }
                     }
                   />
                 </ListItemIcon>
@@ -312,7 +312,7 @@ export default function Layout({
                       sx={
                         router.pathname == '/contact-us'
                           ? {
-                              backgroundColor: '#5688c6',
+                              backgroundColor: '#00b6f2',
                               cursor: 'pointer',
                               color: 'white',
                             }
@@ -324,7 +324,7 @@ export default function Layout({
                           sx={
                             router.pathname == '/contact-us'
                               ? { color: 'white' }
-                              : { color: '#5688c6' }
+                              : { color: '#00b6f2' }
                           }
                         />
                       </ListItemIcon>
@@ -342,7 +342,7 @@ export default function Layout({
                       sx={
                         router.pathname == '/privacy-policy'
                           ? {
-                              backgroundColor: '#5688c6',
+                              backgroundColor: '#00b6f2',
                               cursor: 'pointer',
                               color: 'white',
                             }
@@ -354,7 +354,7 @@ export default function Layout({
                           sx={
                             router.pathname == '/privacy-policy'
                               ? { color: 'white' }
-                              : { color: '#5688c6' }
+                              : { color: '#00b6f2' }
                           }
                         />
                       </ListItemIcon>
@@ -372,7 +372,7 @@ export default function Layout({
                       sx={
                         router.pathname == '/booking-conditions'
                           ? {
-                              backgroundColor: '#5688c6',
+                              backgroundColor: '#00b6f2',
                               cursor: 'pointer',
                               color: 'white',
                             }
@@ -384,7 +384,7 @@ export default function Layout({
                           sx={
                             router.pathname == '/booking-conditions'
                               ? { color: 'white' }
-                              : { color: '#5688c6' }
+                              : { color: '#00b6f2' }
                           }
                         />
                       </ListItemIcon>
@@ -402,7 +402,7 @@ export default function Layout({
                       sx={
                         router.pathname == '/terms-conditions'
                           ? {
-                              backgroundColor: '#5688c6',
+                              backgroundColor: '#00b6f2',
                               cursor: 'pointer',
                               color: 'white',
                             }
@@ -414,7 +414,7 @@ export default function Layout({
                           sx={
                             router.pathname == '/terms-conditions'
                               ? { color: 'white' }
-                              : { color: '#5688c6' }
+                              : { color: '#00b6f2' }
                           }
                         />
                       </ListItemIcon>
@@ -430,7 +430,7 @@ export default function Layout({
                       sx={
                         router.pathname == '/faqs'
                           ? {
-                              backgroundColor: '#5688c6',
+                              backgroundColor: '#00b6f2',
                               cursor: 'pointer',
                               color: 'white',
                             }
@@ -442,7 +442,7 @@ export default function Layout({
                           sx={
                             router.pathname == '/faqs'
                               ? { color: 'white' }
-                              : { color: '#5688c6' }
+                              : { color: '#00b6f2' }
                           }
                         />
                       </ListItemIcon>

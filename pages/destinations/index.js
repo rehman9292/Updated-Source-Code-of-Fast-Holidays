@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styles from "@/styles/destinations.module.css";
-import Layout from "@/components/layout";
-import DestCard from "@/components/common/destCard";
+import React, { useState, useEffect } from 'react';
+import styles from '@/styles/destinations.module.css';
+import Layout from '@/components/layout';
+import DestCard from '@/components/common/destCard';
 import {
   collection,
   query,
@@ -10,12 +10,13 @@ import {
   limit,
   orderBy,
   startAfter,
-} from "firebase/firestore";
-import { db } from "@/config/firebaseConfig";
-import { ThemeProvider, Skeleton } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import { theme } from "@/styles/theme";
-import RandomFooter from "@/components/common/randomFooter";
+} from 'firebase/firestore';
+import { db } from '@/config/firebaseConfig';
+import { ThemeProvider, Skeleton } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { theme } from '@/styles/theme';
+import RandomFooter from '@/components/common/randomFooter';
+import Searchbar from '@/components/searchEngine';
 
 export default function Destinations() {
   const [destinations, setDestinations] = useState([]);
@@ -30,9 +31,9 @@ export default function Destinations() {
       if (destinations.length == 0) {
         const arrOfData = [];
         const q = query(
-          collection(db, "destinations"),
-          orderBy("name", "desc"),
-          limit(9)
+          collection(db, 'destinations'),
+          orderBy('name', 'desc'),
+          limit(9),
         );
         const querySnapshot = await getDocs(q);
         setLastDocu(querySnapshot.docs[querySnapshot.docs.length - 1]);
@@ -43,16 +44,16 @@ export default function Destinations() {
           setBlockApi(true);
         }
         setDestinations(arrOfData);
-        console.log("if");
+        console.log('if');
       } else if (destinations.length > 0) {
         const arrOfData = [];
         let lastVisible = destinations[destinations.length - 1];
-        console.log("last", lastVisible);
+        console.log('last', lastVisible);
         const q = query(
-          collection(db, "destinations"),
-          orderBy("name", "desc"),
+          collection(db, 'destinations'),
+          orderBy('name', 'desc'),
           startAfter(lastDocu),
-          limit(9)
+          limit(9),
         );
         const querySnapshot = await getDocs(q);
         setLastDocu(querySnapshot.docs[querySnapshot.docs.length - 1]);
@@ -82,10 +83,16 @@ export default function Destinations() {
     <>
       <ThemeProvider theme={theme}>
         <Layout title="Destinations">
-        <div className={styles.bannerImg}>
-            <img src="/assets/allDestBanner.jpg" alt={`all destinations banner`} />
+          <div className={styles.bannerImg}>
+            <img
+              src="/assets/allDestBanner.jpg"
+              alt={`all destinations banner`}
+            />
           </div>
           <div className={styles.destinationsContainer}>
+            <div style={{ marginTop: '2rem' }}>
+              <Searchbar />
+            </div>
             <div className={styles.destsHeader}>
               <h1>Destinations</h1>
             </div>
@@ -116,12 +123,13 @@ export default function Destinations() {
             </div>
             {destinations && (
               <LoadingButton
-                sx={{ margin: "2rem" }}
+                sx={{ margin: '2rem' }}
                 loading={fetching}
                 disabled={blockApi}
                 onClick={() => setSkip(skip + 10)}
-                variant="contained">
-                {!blockApi ? "Load More" : "No More"}
+                variant="contained"
+              >
+                {!blockApi ? 'Load More' : 'No More'}
               </LoadingButton>
             )}
           </div>

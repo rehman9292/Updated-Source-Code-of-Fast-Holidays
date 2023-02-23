@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/singleAirlineFares.module.css";
-import { useRouter } from "next/router";
-import Layout from "../../../components/layout";
-import FareCard from "@/components/common/fareCard";
-import { countries } from "utils/data";
+import React, { useEffect, useState } from 'react';
+import styles from '@/styles/singleAirlineFares.module.css';
+import { useRouter } from 'next/router';
+import Layout from '../../../components/layout';
+import FareCard from '@/components/common/fareCard';
+import { countries } from 'utils/data';
 
 // firebase
 import {
@@ -13,13 +13,14 @@ import {
   getDocs,
   startAfter,
   limit,
-} from "firebase/firestore";
-import { db } from "../../../config/firebaseConfig";
-import { convertString } from "../../../utils/helpers";
-import { Typography, Skeleton, ThemeProvider } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import InquiryForm from "@/components/common/inquiryForm";
-import { theme } from "../../../styles/theme";
+} from 'firebase/firestore';
+import { db } from '../../../config/firebaseConfig';
+import { convertString } from '../../../utils/helpers';
+import { Typography, Skeleton, ThemeProvider } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import InquiryForm from '@/components/common/inquiryForm';
+import { theme } from '../../../styles/theme';
+import Searchbar from '@/components/searchEngine';
 
 export default function SingleAirline() {
   const router = useRouter();
@@ -40,9 +41,9 @@ export default function SingleAirline() {
       if (fares.length == 0) {
         const arrOfData = [];
         const q = query(
-          collection(db, "fares"),
-          where("airline.name", "==", airlineSlug),
-          limit(10)
+          collection(db, 'fares'),
+          where('airline.name', '==', airlineSlug),
+          limit(10),
         );
         const querySnapshot = await getDocs(q);
         setLastDocu(querySnapshot.docs[querySnapshot.docs.length - 1]);
@@ -60,10 +61,10 @@ export default function SingleAirline() {
       } else if (fares.length > 0) {
         const arrOfData = [];
         const q = query(
-          collection(db, "fares"),
-          where("airline.name", "==", airlineSlug),
+          collection(db, 'fares'),
+          where('airline.name', '==', airlineSlug),
           startAfter(lastDocu),
-          limit(10)
+          limit(10),
         );
         const querySnapshot = await getDocs(q);
         setLastDocu(querySnapshot.docs[querySnapshot.docs.length - 1]);
@@ -82,8 +83,8 @@ export default function SingleAirline() {
   const getAirlineInfo = async () => {
     const arrOfData = [];
     const q = query(
-      collection(db, "airlines"),
-      where("name", "==", airlineSlug)
+      collection(db, 'airlines'),
+      where('name', '==', airlineSlug),
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -96,8 +97,8 @@ export default function SingleAirline() {
   const getFooterData = async () => {
     const arrOfData = [];
     const q = query(
-      collection(db, "airlinesFooter"),
-      where("name", "==", airlineSlug)
+      collection(db, 'airlinesFooter'),
+      where('name', '==', airlineSlug),
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -127,17 +128,24 @@ export default function SingleAirline() {
   // console.log(fares);
 
   return (
-    <Layout title={"Airlines"}>
+    <Layout title={'Airlines'}>
+      <ThemeProvider theme={theme}></ThemeProvider>
       <div className={styles.faresPage}>
         {airline ? (
-          <div className={styles.bannerImg}>
-            <img src={airline.banner} alt={`${airline.name} image`} />
-            {/* {airlineSlug && (
+          <>
+            <div className={styles.bannerImg}>
+              <img src={airline.banner} alt={`${airline.name} image`} />
+
+              {/* {airlineSlug && (
               <div className={styles.bannerTxt} style={{ display: "none" }}>
                 <h1>{convertString(airlineSlug)}</h1>
               </div>
             )} */}
-          </div>
+            </div>
+            <div style={{ marginTop: '2rem' }}>
+              <Searchbar />
+            </div>
+          </>
         ) : (
           <>
             {airlineSlug && (
@@ -157,46 +165,47 @@ export default function SingleAirline() {
             </>
           ) : (
             <>
-            {
-              <>
-                {!isEmpty && (
-                  <>
-                  {Array(6)
-                    .fill(true)
-                    .map((item, i) => (
-                      <div key={i}>
-                        <div className={styles.fareSkeletonForPC}>
-                          <Skeleton
-                            variant="rectangular"
-                            width={560}
-                            height={215}
-                          />
-                        </div>
-                        <div className={styles.fareSkeletonForPhone}>
-                          <Skeleton
-                            variant="rectangular"
-                            width={280}
-                            height={480}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </>
-                )}
-              </>
-            }
+              {
+                <>
+                  {!isEmpty && (
+                    <>
+                      {Array(6)
+                        .fill(true)
+                        .map((item, i) => (
+                          <div key={i}>
+                            <div className={styles.fareSkeletonForPC}>
+                              <Skeleton
+                                variant="rectangular"
+                                width={560}
+                                height={215}
+                              />
+                            </div>
+                            <div className={styles.fareSkeletonForPhone}>
+                              <Skeleton
+                                variant="rectangular"
+                                width={280}
+                                height={480}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </>
+                  )}
+                </>
+              }
             </>
           )}
         </div>
         <ThemeProvider theme={theme}>
           {fares.length > 0 && (
             <LoadingButton
-              sx={{ margin: "1rem" }}
+              sx={{ margin: '1rem' }}
               loading={fetching}
               disabled={blockApi}
               onClick={() => setSkip(skip + 1)}
-              variant="contained">
-              {blockApi ? "No More" : "More"}
+              variant="contained"
+            >
+              {blockApi ? 'No More' : 'More'}
             </LoadingButton>
           )}
         </ThemeProvider>
