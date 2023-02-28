@@ -17,6 +17,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { theme } from '@/styles/theme';
 import RandomFooter from '@/components/common/randomFooter';
 import Searchbar from '@/components/searchEngine';
+import { seoForDestinations } from 'utils/seo';
 
 export default function Destinations() {
   const [destinations, setDestinations] = useState([]);
@@ -82,7 +83,23 @@ export default function Destinations() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Layout title="Destinations">
+        <Layout
+          title={seoForDestinations.title}
+          keywords={seoForDestinations.keywords}
+          description={seoForDestinations.description}
+          canonical={seoForDestinations.canonical}
+          ogLocale={seoForDestinations.ogLocale}
+          ogType={seoForDestinations.ogType}
+          ogTitle={seoForDestinations.ogTitle}
+          ogDescription={seoForDestinations.ogDescription}
+          ogUrl={seoForDestinations.ogUrl}
+          ogSiteName={seoForDestinations.ogSite_name}
+          twitterCard={seoForDestinations.twitterCard}
+          twitterLabel1={seoForDestinations.twitterLabel1}
+          twitterDescription={seoForDestinations.twitterDescription}
+          twitterSite={seoForDestinations.twitterSite}
+          twitterCreator={seoForDestinations.twitterCreator}
+        >
           <div className={styles.bannerImg}>
             <img
               src="/assets/allDestBanner.jpg"

@@ -83,6 +83,15 @@ export default function Layout({
   ogDescription,
   ogImage,
   ogSiteName,
+  canonical,
+  ogLocale,
+  ogUrl,
+  twitterCard,
+  twitterLabel1,
+  twitterTitle,
+  twitterDescription,
+  twitterSite,
+  twitterCreator,
 }) {
   const router = useRouter();
   const [showSideBar, setShowSideBar] = useState(false);
@@ -90,7 +99,6 @@ export default function Layout({
 
   const handleSideBar = () => {
     setShowSideBar(!showSideBar);
-    // console.log(showSideBar);
   };
 
   const drawer = (
@@ -462,20 +470,6 @@ export default function Layout({
     </div>
   );
 
-  // useEffect(() => {
-  //   setCookie('showCount', 0);
-  //   const showedCount = getCookie('showCount');
-  //   if (showedCount == 0) {
-  //     setShowDialog(true);
-  //     setCookie('showCount', 1);
-  //   } else if (showedCount == 1 || showedCount == 2) {
-  //     setTimeout(() => {
-  //       setShowDialog(true);
-  //       setCookie('showCount', 2);
-  //     }, 4000);
-  //   }
-  // }, []);
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -495,6 +489,23 @@ export default function Layout({
         )}
         {ogImage && <meta property="og:image" content={ogImage} />}
         {ogSiteName && <meta property="og:site_name" content={ogSiteName} />}
+        {canonical && <link rel="canonical" href={canonical} />}
+        {ogLocale && <meta property="og:locale" content={ogLocale} />}
+        {ogType && <meta property="og:type" content={ogType} />}
+        {ogUrl && <meta property="og:url" content={ogUrl} />}
+        {ogSiteName && <meta property="og:site_name" content={ogSiteName} />}
+        {twitterCard && <meta name="twitter:card" content={twitterCard} />}
+        {twitterLabel1 && (
+          <meta name="twitter:label1" content={twitterLabel1} />
+        )}
+        {twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
+        {twitterDescription && (
+          <meta name="twitter:description" content={twitterDescription} />
+        )}
+        {twitterSite && <meta name="twitter:site" content={twitterSite} />}
+        {twitterCreator && (
+          <meta name="twitter:creator" content={twitterCreator} />
+        )}
         {addProductJson && (
           <script
             type="application/ld+json"

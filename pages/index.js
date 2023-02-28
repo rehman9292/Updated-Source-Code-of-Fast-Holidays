@@ -32,6 +32,7 @@ import {
 import { db } from '@/config/firebaseConfig';
 import { appName } from '../utils/constants';
 import Searchbar from '@/components/searchEngine';
+import { seoForHome } from 'utils/seo';
 
 const ITEM_HEIGHT = 40;
 const ITEM_PADDING_TOP = 8;
@@ -94,23 +95,6 @@ export default function Home() {
     // console.log(arrOfData);
     setTopAirlines(arrOfData);
   };
-
-  // const getData = async () => {
-  //   if (data.length == 0) {
-  //     const arrOfData = [];
-
-  //     const q = query(collection(db, "fares"));
-  //     const querySnapshot = await getDocs(q);
-  //     querySnapshot.forEach((doc) => {
-  //       // doc.data() is never undefined for query doc snapshots
-  //       arrOfData.push({ ...doc.data(), _id: doc.id });
-  //     });
-  //     setData(arrOfData);
-  //     // console.log("fetching...");
-  //   } else {
-  //     // console.log("no fetching...");
-  //   }
-  // };
 
   const handleChange = (type, value) => {
     if (type == 'dep') {
@@ -175,7 +159,23 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
+      <Layout
+        title={seoForHome.title}
+        keywords={seoForHome.keywords}
+        description={seoForHome.description}
+        canonical={seoForHome.canonical}
+        ogLocale={seoForHome.ogLocale}
+        ogType={seoForHome.ogType}
+        ogTitle={seoForHome.ogTitle}
+        ogDescription={seoForHome.ogDescription}
+        ogUrl={seoForHome.ogUrl}
+        ogSiteName={seoForHome.ogSite_name}
+        twitterCard={seoForHome.twitterCard}
+        twitterLabel1={seoForHome.twitterLabel1}
+        twitterDescription={seoForHome.twitterDescription}
+        twitterSite={seoForHome.twitterSite}
+        twitterCreator={seoForHome.twitterCreator}
+      >
         <div className={styles.banner}>
           <Searchbar />
         </div>
