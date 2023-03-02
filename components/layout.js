@@ -516,9 +516,7 @@ export default function Layout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-PBHPK0QH55', {
-                  page_path: window.location.pathname,
-                });
+                gtag('config', 'G-PBHPK0QH55');
                 `,
             }}
           />
